@@ -15,7 +15,7 @@ public class Final {
         final int Z; // 상수 변수 선언
         Z = 10; // 상수 변수 초기화
         // Z = 20; // 재할당(X)
-        System.out.println("z= " + Z);
+        System.out.println("Z= " + Z);
     }
 }
 
