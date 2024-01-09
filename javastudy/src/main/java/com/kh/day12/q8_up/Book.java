@@ -1,4 +1,4 @@
-package com.kh.day12.q8_Sol;
+package com.kh.day12.q8_up;
 
 public class Book {
     private String bookName; // 도서명
