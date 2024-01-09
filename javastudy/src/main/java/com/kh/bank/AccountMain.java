@@ -144,13 +144,14 @@ public class AccountMain {
                     int tempAcc = 0; // null인 인덱스 갯수 세기
                     for (int i = 0; i < accounts.length; i++) {
                         if (accounts[i] != null) {
-                            accounts[i].list();
+                            System.out.println(accounts[i]);
                         } else {
                             tempAcc++;
                         }
                     }
-                    System.out.println(accounts[0]); // 사용 중인 계좌수 출력
-                    System.out.println("잔여 계좌 갯수 : " + tempAcc);
+                    System.out.println("사용중인 계좌 수 : " + Account.acc); // 사용 중인 계좌수 출력
+                    System.out.println("잔여 계좌 갯수 : " + tempAcc); // 잔여 계좌 갯수 출력
+                    System.out.println();
                     break;
                 case 7: // ★종료
                     stop = true; // 메뉴 반복출력 flag를 false로 만들어 반복문 종료

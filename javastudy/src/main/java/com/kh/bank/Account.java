@@ -87,9 +87,9 @@ public class Account {
     @Override
     public String toString() {
         String result = "";
-//        result += "예금주 : " + name;
-//        result += "\t|\t잔고 : " + balance + "\n";
-        result += "사용 중인 계좌 수 : " + acc;
+        result += "예금주 : " + name;
+        result += "\t|\t잔고 : " + balance;
+//        result += "사용 중인 계좌 수 : " + acc;
         return result;
     }
 }
