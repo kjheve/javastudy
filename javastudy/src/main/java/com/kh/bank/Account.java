@@ -59,7 +59,7 @@ public class Account {
         System.out.println("---- 조회된 계좌 번호 [" + accNum + "] ----");
         System.out.print("예금주 : " + name);
         System.out.println("\t|\t잔고 : " + balance);
-        System.out.println("---------------------------");
+        System.out.println("------------------------------");
         System.out.println();
     }
 
@@ -89,7 +89,6 @@ public class Account {
         String result = "";
         result += "예금주 : " + name;
         result += "\t|\t잔고 : " + balance;
-//        result += "사용 중인 계좌 수 : " + acc;
         return result;
     }
 }
