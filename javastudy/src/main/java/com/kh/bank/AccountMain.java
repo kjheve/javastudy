@@ -11,6 +11,7 @@ public class AccountMain {
         boolean found; // 계좌 조회 실패시 출력하는 flag
         String accNumber; // 계좌 조회시 입력받을 변수
         int money; // 입금, 출금 입력받을 변수
+        int cnt = 1; // 계좌번호 1, 2, 3, 4, 5, 6 ...
 
 
         while (!stop) {
@@ -54,7 +55,7 @@ public class AccountMain {
                             }
                             if (idx != -1) {
                                 // 인덱스를 찾았을 때 추가
-                                String cntSet = String.format("%03d", idx + 1); // 문자열 00x로 바뀔 코드
+                                String cntSet = String.format("%03d", cnt++); // 문자열 00x로 바뀔 코드
                                 accounts[idx] = new Account(name); // 예금주 이름을 받아 객체 생성
                                 accounts[idx].setAccNum(cntSet); // 문자열 cntSet을 AccNum에 대입
                                 System.out.println("[환영]" + accounts[idx].getName() + "님의 계좌가 개설되었습니다.");
