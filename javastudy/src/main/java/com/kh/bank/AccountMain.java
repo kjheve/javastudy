@@ -1,4 +1,4 @@
-package com.kh.bank;
+package com.kh.bank.bank_home;
 
 import java.util.Scanner;
 
@@ -42,9 +42,9 @@ public class AccountMain {
                                 }
                             }
                         }
-                        
+
                         if (!same) { // 동명이인 분기에서 !true가 되면 false 이므로 아래 수행 안함
-                            
+
                             // null인 인덱스 찾기
                             int idx = -1;
                             for (int i = 0; i < accounts.length; i++) {
@@ -54,7 +54,7 @@ public class AccountMain {
                                 }
                             }
                             if (idx != -1) {
-                                // 인덱스를 찾았을 때 추가
+                                // 인덱스를 찾았을 때 추가 -> ★Null 예외발생하는 오류가 없어졌음★
                                 String cntSet = String.format("%03d", cnt++); // 문자열 00x로 바뀔 코드
                                 accounts[idx] = new Account(name); // 예금주 이름을 받아 객체 생성
                                 accounts[idx].setAccNum(cntSet); // 문자열 cntSet을 AccNum에 대입
@@ -96,15 +96,14 @@ public class AccountMain {
                     System.out.print("(1/2)계좌번호를 입력 해 주세요 : ");
                     accNumber = scanner.nextLine();
 
-                    System.out.print("(2/2)입금금액을 입력 해 주세요 : ");
-                    money = scanner.nextInt();
-                    scanner.nextLine();
-
                     found = false;
                     for (int i = 0; i < accounts.length; i++) {
                         if (accounts[i] != null) { // null 예외처리
                             if (accounts[i].getAccNum().equals(accNumber)) { // i번째 계좌와 입력한 계좌 확인
-                                found = true;
+                                found = true; // 계좌를 찾았다면 found를 true로 변경
+                                System.out.print("(2/2)입금금액을 입력 해 주세요 : ");
+                                money = scanner.nextInt();
+                                scanner.nextLine();
                                 accounts[i].moneyIn(money); // 해당 계좌 입금메소드 호출
                             }
                         }
@@ -118,15 +117,14 @@ public class AccountMain {
                     System.out.print("(1/2)계좌번호를 입력 해 주세요 : ");
                     accNumber = scanner.nextLine();
 
-                    System.out.print("(2/2)출금금액을 입력 해 주세요 : ");
-                    money = scanner.nextInt();
-                    scanner.nextLine();
-
                     found = false;
                     for (int i = 0; i < accounts.length; i++) {
                         if (accounts[i] != null) { // null 예외처리
                             if (accounts[i].getAccNum().equals(accNumber)) { // i번째 계좌와 입력한 계좌 확인
-                                found = true;
+                                found = true; // 계좌를 찾았다면 found를 true로 변경
+                                System.out.print("(2/2)출금금액을 입력 해 주세요 : ");
+                                money = scanner.nextInt();
+                                scanner.nextLine();
                                 accounts[i].moneyOut(money); // 해당 계좌 출금메소드 호출
                             }
                         }
@@ -173,4 +171,3 @@ public class AccountMain {
         System.out.println("시스템 종료");
     }
 }
-

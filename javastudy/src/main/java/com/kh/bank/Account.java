@@ -1,4 +1,4 @@
-package com.kh.bank;
+package com.kh.bank.bank_home;
 
 public class Account {
     private String name; // ★속성 : 예금주 이름
