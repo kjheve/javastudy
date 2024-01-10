@@ -127,7 +127,7 @@ public class Bank {
 
         //잔액이 남아있을 경우
         if (account.getBalance() > 0) {
-            System.out.println("[🚨]잔액이 부족합니다.");
+            System.out.println("[🚨]잔액이 남은 계좌는 폐지 불가능");
             return;
         }
 

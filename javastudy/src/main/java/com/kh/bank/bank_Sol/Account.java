@@ -96,7 +96,7 @@ public class Account {
         Account account = accounts[idx];
         //잔액이 남아있을 경우
         if (account.balance > 0) {
-            System.out.println("[🚨]잔액이 부족합니다.");
+            System.out.println("[🚨]잔액이 남아있습니다.");
             return;
         }
         // 폐지 처리
