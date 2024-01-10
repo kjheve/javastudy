@@ -38,6 +38,7 @@ public class Account {
 
         addAcount(); // 🍀계좌 추가
     }
+
     // 🍀동명이인 찾기
     private boolean samName(String accountName) {
         for (Account ele : accounts) {
@@ -99,8 +100,10 @@ public class Account {
             return;
         }
         // 폐지 처리
-        System.out.println("[🔊]"+account.accountName + "님의 계좌가 폐지됩니다.");
-        account = null;
+        System.out.println("[🔊]" + account.accountName + "님의 계좌가 폐지됩니다.");
+        accounts[idx] = null;
+        // account = null; 로 하면 account 변수가 null을 가리키게 하지
+        // 해당 객체를 배열에서 삭제하는 효과는 없다.
     }
 
 
@@ -177,11 +180,13 @@ public class Account {
             if (ele == null) {
                 continue;
             }
-            usingAccount++; // accounts[i] != null이면 카운트
+
             System.out.print("계좌번호 : " + ele.accountNumber);
             System.out.print("\t예금주명: " + ele.accountName);
             System.out.print("\t잔액 : " + ele.balance);
             System.out.println();
+            usingAccount++; // accounts[i] != null이면 카운트
+
         }
         System.out.println("- 사용중인 계좌수 : " + usingAccount);
         System.out.println("- 잔여 계좌수 : " + (ACCOUNTS_MAX_SIZE - usingAccount));
