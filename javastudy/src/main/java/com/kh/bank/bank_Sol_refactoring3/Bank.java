@@ -22,6 +22,7 @@ public class Bank {
         String accountName; // 예금주명 입력받을 변수
         String accountNumber; // 계좌번호 입력받을 변수
         int money; // 입금액 입력받을 변수
+        int idx = -1; // 계좌 인덱스
 
         while (!stop) {
             System.out.println("[1]신규 / [2]폐지 / [3]입금 / [4]출금");
@@ -52,17 +53,25 @@ public class Bank {
                     System.out.println("= 계좌 입금 =");
                     System.out.print("(1/2)계좌번호 >> ");
                     accountNumber = scanner.nextLine();
+
+                    idx = findAccountIdx(accountNumber);
+                    if (idx == -1) continue;
+
                     System.out.print("(2/2)입금액 >> ");
                     money = Integer.parseInt(scanner.nextLine());
-                    account.deposit(money);
+                    accounts[idx].deposit(money);
                     break;
                 case 4: // 🎈출금
                     System.out.println("= 계좌 출금 =");
                     System.out.print("(1/2)계좌번호 >> ");
                     accountNumber = scanner.nextLine();
+
+                    idx = findAccountIdx(accountNumber);
+                    if (idx == -1) continue;
+
                     System.out.print("(2/2)출금액 >> ");
                     money = Integer.parseInt(scanner.nextLine());
-                    account.withdrawal(money);
+                    accounts[idx].withdrawal(money);
                     break;
                 case 5: // 🎈계좌조회(개별)
                     System.out.println("= 개별 조회 =");
@@ -83,7 +92,7 @@ public class Bank {
             } // Switch 종료
         } // while 종료
         System.out.println("시스템 종료");
-    }
+    } // serviceStart 종료
 
     // 🍀동명이인 찾기
     private boolean samName(String accountName) {
@@ -146,6 +155,21 @@ public class Bank {
         }
         System.out.println("[🚨]입력한 계좌를 찾지 못했습니다.");
         return account; // 못찾았으면 null을 반환
+    }
+
+    // 🍀계좌 검색 (Index로 반환)
+    private static int findAccountIdx(String accountNumber) {
+        int idx = -1;
+        for (int i = 0; i < accounts.length; i++) {
+            if (accounts[i] != null) {
+                if (accounts[i].getAccountNumber().equals(accountNumber)) {
+                    idx = i;
+                    return idx;
+                }
+            }
+        }
+        System.out.println("[🚨]입력한 계좌를 찾지 못했습니다.");
+        return idx;
     }
 
     // 🎈★조회(개별)
